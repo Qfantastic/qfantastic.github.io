@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        header {
+            text-align: center;
+            padding: 10px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #555;
+        }
+        header p {
+            margin: 5px 0 15px;
+            color: #888;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .links {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .links a {
+            text-decoration: none;
+            color: #0066cc;
+            margin: 0 10px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+        .links a img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .tab-menu {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .tab-menu h2 {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 6px 20px;
+            border-radius: 6px;
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .tab-menu h2.active {
+            background-color: #4285f4;
+            color: #fff;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        section p, section ul {
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('publication').style.display = 'none';
+            document.getElementById(sectionId).style.display = 'block';
+
+            document.getElementById('tabAbout').classList.remove('active');
+            document.getElementById('tabPublication').classList.remove('active');
+            document.getElementById('tab' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1)).classList.add('active');
+        }
+
+        window.onload = function () {
+            showSection('about');
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Qifan Zhang</h1>
+            <p>Ph.D. Candidate | Department of Computer Science | The University of Texas at Dallas</p>
+        </header>
+
+        <div class="profile">
+            <img src="self.jpeg" alt="Profile Picture">
+            <div>
+                <p><strong>Email:</strong> <a href="mailto:qxz180010@utdallas.edu">qxz180010@utdallas.edu</a></p>
+                <p><strong>Location:</strong> Allen, Texas, 75013</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="#projects"><img src="CV.png" alt="CV Icon">CV</a>
+            <a href="https://scholar.google.com/citations?user=Osfjt9EAAAAJ&hl=en"><img src="google_scholar.png" alt="Research Icon">Google Scholar</a>
+            <a href="https://www.linkedin.com/in/qifan-zhang-2a68211a7/" target="_blank"><img src="linkedin.png" alt="LinkedIn Icon">LinkedIn</a>
+            <a href="https://github.com/Qfantastic" target="_blank"><img src="github.png" alt="GitHub Icon">GitHub</a>
+        </div>
+
+        <div class="tab-menu">
+            <h2 id="tabAbout" onclick="showSection('about')">About Me</h2>
+            <h2 id="tabPublication" onclick="showSection('publication')">Publication</h2>
+        </div>
+
+        <section id="about">
+            <p>I am a Ph.D. student in the Department of Computer Science at the University of Texas at Dallas. My research primarily focuses on event cameras, hand-object detection, and computer vision-related problems. I am currently working as a research assistant in the <a href='https://labs.utdallas.edu/irvl/' target='_blank'>Intelligent Robotics and Vision Lab</a> under the supervision of Professor <a href='https://yuxng.github.io/' target='_blank'>Yu Xiang</a>. My current research interests include continual learning problems in image classification and segmentation, involving large vision model fine-tuning and knowledge distillation.</p>
+
+            <h2>Recent News</h2>
+            <ul>
+                <li><strong>2024:</strong> Served as a TA guiding the <a href="https://stem.cast-texas.org/">CAST-STEM Bridge Summer Camp</a>, and our supervised <a href="https://sites.google.com/view/016castbridge2024/about-us/">Team of High School Students</a> received the 2nd Prize CAST STAR Award.</li>
+                <li><strong>2022:</strong>Participated in the <a href="https://www.youtube.com/watch?v=pEM8gcRkA7M">DARPA PTG Demo Day 2022</a> at MIT.</li>
+                <li><strong>2022:</strong> I joined the <strong><a href="https://labs.utdallas.edu/irvl/">Intelligent Robotics and Vision Lab</a></strong> at the University of Texas at Dallas as a Ph.D. student.</li>
+            </ul>
+        </section>
+
+        <section id="publication" style="display:none;">
+            <ul>
+                <li>
+                    <strong>Continual Distillation Learning: An Empirical Study of Knowledge Distillation in Prompt-based Continual Learning</strong><br>
+                    Qifan Zhang, Yunhui Guo, Yu Xiang.<br>
+                    In <em>arXiv</em>, 2024.
+                </li>
+                <li>
+                    <strong>HO-Cap: A Capture System and Dataset for 3D Reconstruction and Pose Tracking of Hand-Object Interaction</strong><br>
+                    Jikai Wang, Qifan Zhang, Yu-Wei Chao, Bowen Wen, Xiaohu Guo, Yu Xiang.<br>
+                    In <em>arXiv</em>, 2024.
+                </li>
+                <li>
+                    <strong>CaptainCook4D: A dataset for understanding errors in procedural activities</strong><br>
+                    Rohith Peddi, Shivrat Arya, Bharath Challa, Likhitha Pallapothula, Akshay Vyas, Bhavya Gouripeddi, Jikai Wang, Qifan Zhang, Vasundhara Komaragiri, Eric Ragan, Nicholas Ruozzi, Yu Xiang, Vibhav Gogate.<br>
+                    In <em>NeurIPS</em>, 2024.
+                </li>
+                <li>
+                    <strong>Blur-free low-light imaging with color and event cameras</strong><br>
+                    Nianyi Li, Jinwei Ye, Qifan Zhang, S Susan Young<br>
+                    In <em>Computational Imaging VI</em>, 2021.
+                </li>
+                <li>
+                    <strong>Co-Calibration and Registration of Color and Event Cameras</strong><br>
+                    Qifan Zhang, Jinwei Ye, Philip Osteen, et al.<br>
+                    In <em>ARL-TR-9108</em>, 2020.
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
