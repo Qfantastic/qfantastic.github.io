@@ -1,198 +1,890 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <style>
-        body {
-            /* font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            color: #333; */
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            /* max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; */
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; */
-        }
-        header {
-            text-align: center;
-            padding: 10px 0;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-            color: #555;
-        }
-        header p {
-            margin: 5px 0 15px;
-            color: #888;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .profile img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            margin-right: 20px;
-        }
-        .links {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .links a {
-            text-decoration: none;
-            color: #0066cc;
-            margin: 0 10px;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-        }
-        .links a img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        .tab-menu {
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .tab-menu h2 {
-            font-size: 24px;
-            cursor: pointer;
-            padding: 6px 20px;
-            border-radius: 6px;
-            background-color: #e0e0e0;
-            color: #333;
-        }
-        .tab-menu h2.active {
-            background-color: #4285f4;
-            color: #fff;
-        }
-        section {
-            margin-bottom: 20px;
-        }
-        section p, section ul {
-            margin-bottom: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
-    <script>
-        function showSection(sectionId) {
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('publication').style.display = 'none';
-            document.getElementById(sectionId).style.display = 'block';
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qifan Zhang | Personal Website</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --soft: #f1f4f9;
+      --line: #dde4ef;
+      --text: #17233b;
+      --muted: #5e6d86;
+      --primary: #2f6df6;
+      --primary-soft: #e9f0ff;
+      --shadow: 0 12px 34px rgba(20, 40, 80, 0.08);
+      --radius: 24px;
+      --container: 1140px;
+      --nav-height: 74px;
+    }
 
-            document.getElementById('tabAbout').classList.remove('active');
-            document.getElementById('tabPublication').classList.remove('active');
-            document.getElementById('tab' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1)).classList.add('active');
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
 
-        window.onload = function () {
-            showSection('about');
-        };
-    </script>
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 251, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(221, 228, 239, 0.9);
+    }
+
+    .topbar-inner {
+      max-width: var(--container);
+      min-height: var(--nav-height);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+    }
+
+    section {
+      scroll-margin-top: calc(var(--nav-height) + 24px);
+      margin-top: 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(260px, 330px);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .hero-card,
+    .profile-card,
+    .section-card {
+      background: var(--card);
+      border: 1px solid rgba(221, 228, 239, 0.95);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 28px 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* .intro {
+      margin: 0;
+      color: #2f3e5a;
+      font-size: 1.02rem;
+      max-width: 92%;
+    } */
+    .intro {
+      margin: 0;
+      color: #2f3e5a;
+      font-size: 1.02rem;
+      max-width: 100%;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+
+    .info-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: var(--soft);
+      border: 1px solid #e3e9f3;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 0.98rem;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .profile-card {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1.08;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid #e3e9f3;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .profile-link {
+      flex: 1 1 calc(50% - 5px);
+      min-width: 120px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 700;
+      color: #20304d;
+      transition: all 0.18s ease;
+    }
+
+    .profile-link:hover {
+      transform: translateY(-2px);
+      border-color: #bfd1ff;
+      box-shadow: 0 10px 20px rgba(47, 109, 246, 0.12);
+    }
+
+    .profile-link img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .section-card {
+      padding: 28px 30px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.65rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .section-description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .news-scroll {
+      max-height: 350px;
+      overflow-y: auto;
+      padding-right: 8px;
+      scrollbar-width: thin;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 14px 6px;
+      border-bottom: 1px solid #edf1f7;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #202a3c;
+      white-space: nowrap;
+    }
+
+    .news-text {
+      margin: 0;
+      color: #2f3e5a;
+      font-size: 1rem;
+    }
+
+    .news-text a {
+      color: #f08a1f;
+    }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* .pub-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      border: 1px solid #e3e9f3;
+    } */
+    .pub-item {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      border: 1px solid #e3e9f3;
+    }
+    /* .pub-thumb,
+    .project-thumb {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid #d9e3f1;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eef4ff 0%, #dde9ff 100%);
+      display: grid;
+      place-items: center;
+    } */
+    .pub-thumb {
+      width: 100%;
+      border-radius: 0;
+      border: none;
+      overflow: hidden;
+      background: transparent;
+      display: block;
+      aspect-ratio: 1.5 / 1;
+      min-height: 120px;
+    }
+
+    .project-thumb {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid #d9e3f1;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eef4ff 0%, #dde9ff 100%);
+      display: grid;
+      place-items: center;
+      aspect-ratio: 16 / 9;
+      min-height: 150px;
+    }
+    /* .pub-thumb {
+      aspect-ratio: 1.45 / 1;
+      min-height: 96px;
+    } */
+
+    .pub-thumb {
+      aspect-ratio: 1.5 / 1;
+      min-height: 120px;
+    }
+
+    .pub-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top;
+      display: block;
+      background: transparent;
+    }
+
+    .project-thumb {
+      aspect-ratio: 16 / 9;
+      min-height: 150px;
+    }
+
+    .thumb-label {
+      padding: 10px 12px;
+      color: #4569ad;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    /* .pub-title {
+      margin: 0 0 8px;
+      font-size: 1.38rem;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+    }
+
+    .pub-authors,
+    .pub-venue {
+      margin: 0;
+      color: #44536f;
+    } */
+    .pub-title {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      line-height: 1.24;
+      letter-spacing: -0.02em;
+    }
+
+    .pub-authors {
+      margin: 0;
+      color: #44536f;
+      font-size: 0.95rem;
+    }
+
+    .pub-venue {
+      margin: 4px 0 0;
+      color: #44536f;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .pub-venue {
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .pub-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .action-btn,
+    .action-btn-disabled {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      padding: 6px 11px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      border: 1px solid #1f2937;
+    }
+
+    .action-btn {
+      background: #fff;
+      color: #1f2937;
+      transition: all 0.18s ease;
+    }
+
+    .action-btn:hover {
+      background: #111827;
+      color: #fff;
+    }
+
+    .action-btn-disabled {
+      color: #8b97aa;
+      border-color: #cad3e1;
+      background: #f8fafc;
+      cursor: default;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid #e3e9f3;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      box-shadow: 0 10px 28px rgba(20, 40, 80, 0.07);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(20, 40, 80, 0.1);
+    }
+
+    .project-content {
+      padding: 18px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .project-title {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .project-subtitle {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.98rem;
+    }
+
+    .project-description {
+      margin: 0;
+      color: #44536f;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.94rem;
+      padding: 28px 0 4px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .projects-grid,
+      .pub-item {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        max-width: 100%;
+      }
+
+      .profile-card {
+        max-width: 420px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero-card,
+      .profile-card,
+      .section-card {
+        padding: 22px;
+      }
+
+      .info-grid,
+      .news-item {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-link {
+        min-width: calc(50% - 5px);
+      }
+
+      .section-title {
+        font-size: 1.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Qifan Zhang</h1>
-            <p>Ph.D. Candidate | Department of Computer Science | The University of Texas at Dallas</p>
-        </header>
-
-        <div class="profile">
-            <img src="self.jpeg" alt="Profile Picture">
-            <div>
-                <p><strong>Email:</strong> <a href="mailto:qxz180010@utdallas.edu">qxz180010@utdallas.edu</a></p>
-                <p><strong>Location:</strong> Allen, Texas, 75013</p>
-            </div>
-        </div>
-
-        <div class="links">
-            <a href="#projects"><img src="CV.png" alt="CV Icon">CV</a>
-            <a href="https://scholar.google.com/citations?user=Osfjt9EAAAAJ&hl=en"><img src="google_scholar.png" alt="Research Icon">Google Scholar</a>
-            <a href="https://www.linkedin.com/in/qifan-zhang-2a68211a7/" target="_blank"><img src="linkedin.png" alt="LinkedIn Icon">LinkedIn</a>
-            <a href="https://github.com/Qfantastic" target="_blank"><img src="github.png" alt="GitHub Icon">GitHub</a>
-        </div>
-
-        <div class="tab-menu">
-            <h2 id="tabAbout" onclick="showSection('about')">About Me</h2>
-            <h2 id="tabPublication" onclick="showSection('publication')">Publication</h2>
-        </div>
-
-        <section id="about">
-            <p>I am a Ph.D. student in the Department of Computer Science at the University of Texas at Dallas. My research primarily focuses on event cameras, hand-object detection, and computer vision-related problems. I am currently working as a research assistant in the <a href='https://labs.utdallas.edu/irvl/' target='_blank'>Intelligent Robotics and Vision Lab</a> under the supervision of Professor <a href='https://yuxng.github.io/' target='_blank'>Yu Xiang</a>. My current research interests include continual learning problems in image classification and segmentation, involving large vision model fine-tuning and knowledge distillation.</p>
-
-            <h2>Recent News</h2>
-            <ul>
-                <li><strong>2024:</strong> Served as a TA guiding the <a href="https://stem.cast-texas.org/">CAST-STEM Bridge Summer Camp</a>, and our supervised <a href="https://sites.google.com/view/016castbridge2024/about-us/">Team of High School Students</a> received the 2nd Prize CAST STAR Award.</li>
-                <li><strong>2022:</strong>Participated in the <a href="https://www.youtube.com/watch?v=pEM8gcRkA7M">DARPA PTG Demo Day 2022</a> at MIT.</li>
-                <li><strong>2022:</strong> I joined the <strong><a href="https://labs.utdallas.edu/irvl/">Intelligent Robotics and Vision Lab</a></strong> at the University of Texas at Dallas as a Ph.D. student.</li>
-            </ul>
-        </section>
-
-        <section id="publication" style="display:none;">
-            <ul>
-                <li>
-                    <strong>Continual Distillation Learning: An Empirical Study of Knowledge Distillation in Prompt-based Continual Learning</strong><br>
-                    Qifan Zhang, Yunhui Guo, Yu Xiang.<br>
-                    In <em>arXiv</em>, 2024.
-                </li>
-                <li>
-                    <strong>HO-Cap: A Capture System and Dataset for 3D Reconstruction and Pose Tracking of Hand-Object Interaction</strong><br>
-                    Jikai Wang, Qifan Zhang, Yu-Wei Chao, Bowen Wen, Xiaohu Guo, Yu Xiang.<br>
-                    In <em>arXiv</em>, 2024.
-                </li>
-                <li>
-                    <strong>CaptainCook4D: A dataset for understanding errors in procedural activities</strong><br>
-                    Rohith Peddi, Shivrat Arya, Bharath Challa, Likhitha Pallapothula, Akshay Vyas, Bhavya Gouripeddi, Jikai Wang, Qifan Zhang, Vasundhara Komaragiri, Eric Ragan, Nicholas Ruozzi, Yu Xiang, Vibhav Gogate.<br>
-                    In <em>NeurIPS</em>, 2024.
-                </li>
-                <li>
-                    <strong>Blur-free low-light imaging with color and event cameras</strong><br>
-                    Nianyi Li, Jinwei Ye, Qifan Zhang, S Susan Young<br>
-                    In <em>Computational Imaging VI</em>, 2021.
-                </li>
-                <li>
-                    <strong>Co-Calibration and Registration of Color and Event Cameras</strong><br>
-                    Qifan Zhang, Jinwei Ye, Philip Osteen, et al.<br>
-                    In <em>ARL-TR-9108</em>, 2020.
-                </li>
-            </ul>
-        </section>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-title">Qifan Zhang</div>
+        <!-- <div class="brand-subtitle">Personal Website</div> -->
+      </div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a class="nav-link" href="#about">About Me</a>
+        <a class="nav-link" href="#news">Recent News</a>
+        <a class="nav-link" href="#publications">Publications</a>
+        <a class="nav-link" href="#projects">Projects</a>
+      </nav>
     </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Ph.D. Student · Computer Vision · Robotics</div>
+        <!-- <h1>Qifan Zhang</h1> -->
+        <!-- <p class="subtitle">Department of Computer Science · The University of Texas at Dallas</p> -->
+        <p class="intro">
+          My name is <strong>Qifan Zhang</strong>. I am a Ph.D. student in the Department of Computer Science at The University of Texas at Dallas.
+          I work in the <a href="https://labs.utdallas.edu/irvl/" target="_blank" rel="noopener noreferrer"><strong>Intelligent Robotics and Vision Lab</strong></a>
+          under the supervision of <a href="https://yuxng.github.io/" target="_blank" rel="noopener noreferrer"><strong>Professor Yu Xiang</strong></a>.
+          My research interests include computer vision, robot perception, continual learning, and knowledge distillation. 
+          <strong>I am currently seeking internship and full-time opportunities. Please feel free to reach out if you would like to connect.</strong>
+        </p>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="mailto:Qifan.Zhang@utdallas.edu">Qifan.Zhang@utdallas.edu</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Location</div>
+            <div class="info-value">Richardson / Allen, Texas</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Lab</div>
+            <div class="info-value"><a href="https://labs.utdallas.edu/irvl/" target="_blank" rel="noopener noreferrer"><strong>IRVL @ UTD</strong></a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Focus</div>
+            <div class="info-value">Open-world Perception 
+              &amp;<br> Continual Learning</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <img class="profile-photo" src="self.jpeg" alt="Portrait of Qifan Zhang" />
+        <div class="profile-links">
+          <a class="profile-link" href="#" target="_blank" rel="noopener noreferrer">
+            <img src="CV.png" alt="CV icon" />
+            <span>CV</span>
+          </a>
+          <a class="profile-link" href="https://scholar.google.com/citations?user=Osfjt9EAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">
+            <img src="google_scholar.png" alt="Google Scholar icon" />
+            <span>Scholar</span>
+          </a>
+          <a class="profile-link" href="https://www.linkedin.com/in/qifan-zhang-2a68211a7/" target="_blank" rel="noopener noreferrer">
+            <img src="linkedin.png" alt="LinkedIn icon" />
+            <span>LinkedIn</span>
+          </a>
+          <a class="profile-link" href="https://github.com/Qfantastic" target="_blank" rel="noopener noreferrer">
+            <img src="github.png" alt="GitHub icon" />
+            <span>GitHub</span>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="news" class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">Recent News</h2>
+      </div>
+      <div class="news-scroll">
+        <article class="news-item">
+          <div class="news-date">Sep 2025</div>
+          <p class="news-text">
+            Our paper <strong>HO-Cap: A Capture System and Dataset for 3D Reconstruction and Pose Tracking of Hand-Object Interaction</strong>
+            is accepted at NeurIPS 2025 Datasets &amp; Benchmarks Track</a>.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Jul 2025</div>
+          <p class="news-text">
+            Our supervised <strong>team of high school students</strong> received the <strong>2nd Prize CAST STAR Award</strong>
+            in CAST-STEM Bridge Summer Camp 2025.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Sep 2024</div>
+          <p class="news-text">
+            Our paper <strong>CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities</strong>
+            is accepted at NeurIPS 2024 Datasets &amp; Benchmarks Track</a>.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Jul 2024</div>
+          <p class="news-text">
+            Our supervised <strong>team of high school students</strong> received the <strong>2nd Prize CAST STAR Award</strong>
+            in CAST-STEM Bridge Summer Camp 2024.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Nov 2022</div>
+          <p class="news-text">
+            Participated in the <strong><a href="https://www.youtube.com/watch?v=pEM8gcRkA7M">DARPA PTG Demo Day</a></strong> at MIT.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications" class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">Publications</h2>
+        <!-- <p class="section-description">You can replace each placeholder image and fill in more links later.</p> -->
+      </div>
+
+      <div class="pub-list">
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+            <img src="L2G.png" alt="L2G paper image">
+
+            <!-- </div> -->
+          </div>
+          <div>
+            <h3 class="pub-title">From Local Matches to Global Masks: Novel Instance Detection in Open-World Scenes</h3>
+            <p class="pub-authors"><u>Qifan Zhang</u>, Sai Haneesh Allu, Jikai Wang, Yangxiao Lu, and Yu Xiang</p>
+            <p class="pub-venue">arXiv preprint, 2026</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://arxiv.org/abs/2603.03577" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a class="action-btn" href="https://github.com/IRVLUTD/L2G" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="action-btn" href="https://irvlutd.github.io/L2G/" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+             <img src="CDL_overview.png" alt="CDL paper image">
+            <!-- </div> -->
+          </div>
+          <div>
+            <h3 class="pub-title">Decoupled Prompting for Continual Distillation in Rehearsal-Free Class-Incremental Learning</h3>
+            <p class="pub-authors"><u>Qifan Zhang</u>, Yunhui Guo, and Yu Xiang</p>
+            <p class="pub-venue">arXiv preprint, 2025</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://arxiv.org/abs/2407.13911" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a class="action-btn" href="https://github.com/IRVLUTD/CDL" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="action-btn" href="https://irvlutd.github.io/CDL/" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+              <img src="HOCAP.png" alt="HOCAP paper image">
+            <!-- </div> -->
+          </div>
+          <div>
+            <h3 class="pub-title">HO-Cap: A Capture System and Dataset for 3D Reconstruction and Pose Tracking of Hand-Object Interaction</h3>
+            <p class="pub-authors">Jikai Wang, <u>Qifan Zhang</u>, Yu-Wei Chao, Bowen Wen, Xiaohu Guo, and Yu Xiang</p>
+            <p class="pub-venue">NeurIPS Datasets and Benchmarks Track, 2025</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://arxiv.org/abs/2406.06843" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a class="action-btn" href="https://github.com/IRVLUTD/HO-Cap" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="action-btn" href="https://irvlutd.github.io/HOCap/" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+              <img src="Cook4D.png" alt="HOCAP paper image">
+            <!-- </div> -->
+          </div>
+          <div>
+            <h3 class="pub-title">CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities</h3>
+            <p class="pub-authors">Rohith Peddi, Shivrat Arya, Bharath Challa, Likhitha Pallapothula, Akshay Vyas, Bhavya Gouripeddi, Jikai Wang, <u>Qifan Zhang</u>, Vasundhara Komaragiri, Eric Ragan, Nicholas Ruozzi, Yu Xiang, and Vibhav Gogate</p>
+            <p class="pub-venue">NeurIPS Datasets and Benchmarks Track, 2024</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://arxiv.org/abs/2312.14556" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a class="action-btn" href="https://github.com/CaptainCook4D/" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="action-btn" href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+              <img src="Blur_event.png" alt="Deblur paper image">
+            <!-- </div> -->
+          </div>
+          <div>
+            <h3 class="pub-title">Blur-free Low-light Imaging with Color and Event Cameras</h3>
+            <p class="pub-authors">Nianyi Li, Jinwei Ye, <u>Qifan Zhang</u>, and S. Susan Young</p>
+            <p class="pub-venue">Proceedings of SPIE 11731, Computational Imaging VI, 2021</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11731/1173109/Blur-free-low-light-imaging-with-color-and-event-cameras/10.1117/12.2586745.full" target="_blank" rel="noopener noreferrer">Paper</a>
+              <a class="action-btn" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11731/1173109/Blur-free-low-light-imaging-with-color-and-event-cameras/10.1117/12.2586745.full" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item">
+          <div class="pub-thumb">
+            <!-- <div class="thumb-label"> -->
+              <img src="Co-cali.png" alt="Co-calibration paper image">
+          <!-- </div> -->
+           </div>
+          <div>
+            <h3 class="pub-title">Co-Calibration and Registration of Color and Event Cameras</h3>
+            <p class="pub-authors"><u>Qifan Zhang</u>, Jinwei Ye, Philip Osteen, et al.</p>
+            <p class="pub-venue">ARL-TR-9108, 2020</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://apps.dtic.mil/sti/tr/pdf/AD1116489.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+              <a class="action-btn" href="https://apps.dtic.mil/sti/tr/pdf/AD1116489.pdf" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <!-- <p class="section-description">Project cards are ready for your cover images and target links.</p> -->
+      </div>
+
+      <div class="projects-grid">
+        <a class="project-card" href="https://www.youtube.com/watch?v=pEM8gcRkA7M">
+          <div class="project-thumb">
+            <img src="PTG.png" alt="Darpa project image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">DARPA PTG</h3>
+            <!-- <p class="project-subtitle">Short subtitle or year</p> -->
+            <p class="project-description"> A first-person AR assistant on Microsoft HoloLens 2 
+              that recognizes relevant objects and provides real-time guidance for kitchen tasks 
+              such as cooking and coffee making.</p>
+            <!-- <span class="project-link">Open Project →</span> -->
+          </div>
+        </a>
+
+        <a class="project-card" href="https://sites.google.com/view/016castbridge2024/home">
+          <div class="project-thumb">
+            <img src="Summer2024.png" alt="Summer2024 project image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">STEM Bridge 2024</h3>
+            <!-- <p class="project-subtitle">Short subtitle or year</p> -->
+            <p class="project-description">A multi-camera hand-object pose estimation project 
+              that integrates 3D hand reconstruction and 6D object tracking for AR/VR and 
+              robotics applications.</p>
+            <!-- <span class="project-link">Open Project →</span> -->
+          </div>
+        </a>
+
+       <a class="project-card" href="https://6870362276c8fc9e2aeeb7c4--beamish-babka-095ba1.netlify.app/">
+          <div class="project-thumb">
+            <img src="Summer2025.png" alt="Summer2025 project image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">STEM Bridge 2025</h3>
+            <!-- <p class="project-subtitle">Short subtitle or year</p> -->
+            <p class="project-description">A perception-driven robot grasping project that 
+              integrates object segmentation, 6D pose estimation, and robotic execution across 
+              simulation and real-world Fetch robot.</p>
+            <!-- <span class="project-link">Open Project →</span> -->
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 Qifan Zhang. Built as a single-page personal academic website.
+    </footer>
+  </main>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section[id]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    sections.forEach((section) => observer.observe(section));
+  </script>
 </body>
 </html>
