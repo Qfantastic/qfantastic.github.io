@@ -262,6 +262,10 @@
       max-width: 760px;
     }
 
+    article[id] {
+      scroll-margin-top: calc(var(--nav-height) + 24px);
+    }
+
     .news-scroll {
       max-height: 350px;
       overflow-y: auto;
@@ -381,6 +385,12 @@
       min-height: 150px;
     }
 
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .thumb-label {
       padding: 10px 12px;
       color: #4569ad;
@@ -473,6 +483,7 @@
     }
 
     .project-card {
+      text-align: left;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -501,7 +512,7 @@
       font-size: 1.28rem;
       line-height: 1.22;
       letter-spacing: -0.02em;
-      text-align: center;
+      text-align: left;
     }
 
     .project-subtitle {
@@ -513,8 +524,7 @@
     .project-description {
       margin: 0;
       color: #44536f;
-      text-align: justify;
-      text-justify: inter-word;
+      text-align: left;
     }
 
     .project-link {
@@ -589,7 +599,7 @@
         <a class="nav-link" href="#about">About Me</a>
         <a class="nav-link" href="#news">Recent News</a>
         <a class="nav-link" href="#publications">Publications</a>
-        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#projects">Other Projects</a>
       </nav>
     </div>
   </header>
@@ -597,14 +607,16 @@
   <main class="container">
     <section id="about" class="hero">
       <div class="hero-card">
-        <div class="eyebrow">Ph.D. Student · Computer Vision · Robotics</div>
+        <div class="eyebrow">Ph.D. Candidate · Computer Vision · Robotics</div>
         <!-- <h1>Qifan Zhang</h1> -->
         <!-- <p class="subtitle">Department of Computer Science · The University of Texas at Dallas</p> -->
         <p class="intro">
-          My name is <strong>Qifan Zhang</strong>. I am a Ph.D. student in the Department of Computer Science at The University of Texas at Dallas.
+          I am <strong>Qifan Zhang</strong>, a Ph.D. candidate in Computer Science at The University of Texas at Dallas.
           I work in the <a href="https://labs.utdallas.edu/irvl/" target="_blank" rel="noopener noreferrer"><strong>Intelligent Robotics and Vision Lab</strong></a>
           under the supervision of <a href="https://yuxng.github.io/" target="_blank" rel="noopener noreferrer"><strong>Professor Yu Xiang</strong></a>.
-          My research interests include computer vision, robot perception, continual learning, and knowledge distillation. 
+          My research focuses on <strong>computer vision, robot manipulation, and continual learning</strong>, with experience in knowledge distillation, prompt tuning, and training and fine-tuning vision transformers and vision-language-action (VLA) models.
+          I develop perception methods for open-world instance detection, segmentation, and hand-object understanding.
+          My current work explores how VLA policies can retain and transfer skills across tasks, as well as multimodal LLM agents for closed-loop robot manipulation.
           <strong>I am currently seeking internship and full-time opportunities. Please feel free to reach out if you would like to connect.</strong>
         </p>
 
@@ -615,7 +627,7 @@
           </div>
           <div class="info-item">
             <div class="info-label">Location</div>
-            <div class="info-value">Richardson / Allen, Texas</div>
+            <div class="info-value">Richardson, Texas · Open to relocation</div>
           </div>
           <div class="info-item">
             <div class="info-label">Lab</div>
@@ -623,8 +635,7 @@
           </div>
           <div class="info-item">
             <div class="info-label">Focus</div>
-            <div class="info-value">Open-world Perception 
-              &amp;<br> Continual Learning</div>
+            <div class="info-value">Robot Perception &amp; Manipulation<br>Continual Learning &amp; VLA Models</div>
           </div>
         </div>
       </div>
@@ -632,7 +643,7 @@
       <aside class="profile-card">
         <img class="profile-photo" src="self.jpeg" alt="Portrait of Qifan Zhang" />
         <div class="profile-links">
-          <a class="profile-link" href="CV/CV_2026.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="profile-link" href="CV/Qifan_Zhang_Resume.pdf" target="_blank" rel="noopener noreferrer">
             <img src="CV.png" alt="CV icon" />
             <span>CV</span>
           </a>
@@ -658,9 +669,31 @@
       </div>
       <div class="news-scroll">
         <article class="news-item">
+          <div class="news-date">Oct 2026</div>
+          <p class="news-text">
+            Our <a href="#publication-llm-libero"><strong>LLM–LIBERO arXiv preprint</strong></a>,
+            <strong>From Reasoning to Action: Benchmarking Frontier AI Models on LIBERO-10 Robot Manipulation Tasks</strong>,
+            benchmarks frontier AI models in a closed-loop robot manipulation pipeline.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Jul 2026</div>
+          <p class="news-text">
+            Our paper <strong>Continual Distillation Learning for Rehearsal-Free Class-Incremental Learning via Decoupled Prompting (D-CDL)</strong>
+            has been accepted at <strong>CoLLAs 2026</strong>.
+          </p>
+        </article>
+        <article class="news-item">
+          <div class="news-date">Jul 2026</div>
+          <p class="news-text">
+            The <a href="#project-stem-2026"><strong>CAST-STEM Bridge 2026</strong></a> project received <strong>3rd Prize</strong>.
+            The project uses SO-101 teleoperation demonstrations and VLA policy fine-tuning for autonomous manipulation.
+          </p>
+        </article>
+        <article class="news-item">
           <div class="news-date">May 2026</div>
           <p class="news-text">
-            Our paper <strong>From Local Matches to Global Masks: Novel Instance Detection in Open-World Scenes</strong>
+            Our paper <strong>From Local Matches to Global Masks: Template-Guided Instance Detection and Segmentation in Open-World Scenes</strong>
             has been accepted to <a href="https://roboticsconference.org/" target="_blank" rel="noopener noreferrer">RSS 2026</a>.
           </p>
         </article>
@@ -668,7 +701,7 @@
           <div class="news-date">Sep 2025</div>
           <p class="news-text">
             Our paper <strong>HO-Cap: A Capture System and Dataset for 3D Reconstruction and Pose Tracking of Hand-Object Interaction</strong>
-            is accepted at NeurIPS 2025 Datasets &amp; Benchmarks Track</a>.
+            was accepted at NeurIPS 2025 Datasets &amp; Benchmarks Track.
           </p>
         </article>
         <article class="news-item">
@@ -682,7 +715,7 @@
           <div class="news-date">Sep 2024</div>
           <p class="news-text">
             Our paper <strong>CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities</strong>
-            is accepted at NeurIPS 2024 Datasets &amp; Benchmarks Track</a>.
+            was accepted at NeurIPS 2024 Datasets &amp; Benchmarks Track.
           </p>
         </article>
         <article class="news-item">
@@ -711,14 +744,14 @@
         <article class="pub-item">
           <div class="pub-thumb">
             <!-- <div class="thumb-label"> -->
-            <img src="L2G.png" alt="L2G paper image">
+            <img src="L2G.png" alt="L2G-Det instance detection and segmentation overview">
 
             <!-- </div> -->
           </div>
           <div>
-            <h3 class="pub-title">From Local Matches to Global Masks: Novel Instance Detection in Open-World Scenes</h3>
+            <h3 class="pub-title">From Local Matches to Global Masks: Template-Guided Instance Detection and Segmentation in Open-World Scenes</h3>
             <p class="pub-authors"><u>Qifan Zhang</u>, Sai Haneesh Allu, Jikai Wang, Yangxiao Lu, and Yu Xiang</p>
-            <p class="pub-venue">arXiv preprint, 2026</p>
+            <p class="pub-venue">Robotics: Science and Systems (RSS), 2026</p>
             <div class="pub-actions">
               <a class="action-btn" href="https://arxiv.org/abs/2603.03577" target="_blank" rel="noopener noreferrer">arXiv</a>
               <a class="action-btn" href="https://github.com/IRVLUTD/L2G" target="_blank" rel="noopener noreferrer">Code</a>
@@ -730,17 +763,34 @@
         <article class="pub-item">
           <div class="pub-thumb">
             <!-- <div class="thumb-label"> -->
-             <img src="CDL_overview.png" alt="CDL paper image">
+             <img src="CDL_overview.png" alt="D-CDL continual distillation framework">
             <!-- </div> -->
           </div>
           <div>
-            <h3 class="pub-title">Decoupled Prompting for Continual Distillation in Rehearsal-Free Class-Incremental Learning</h3>
+            <h3 class="pub-title">Continual Distillation Learning for Rehearsal-Free Class-Incremental Learning via Decoupled Prompting</h3>
             <p class="pub-authors"><u>Qifan Zhang</u>, Yunhui Guo, and Yu Xiang</p>
-            <p class="pub-venue">arXiv preprint, 2025</p>
+            <p class="pub-venue">Accepted at CoLLAs 2026</p>
             <div class="pub-actions">
               <a class="action-btn" href="https://arxiv.org/abs/2407.13911" target="_blank" rel="noopener noreferrer">arXiv</a>
               <a class="action-btn" href="https://github.com/IRVLUTD/CDL" target="_blank" rel="noopener noreferrer">Code</a>
               <a class="action-btn" href="https://irvlutd.github.io/CDL/" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item" id="publication-llm-libero">
+          <div class="pub-thumb">
+            <img src="LLM-libero.png" alt="LLM–LIBERO closed-loop robot manipulation evaluation framework">
+          </div>
+          <div>
+            <h3 class="pub-title">From Reasoning to Action: Benchmarking Frontier AI Models on LIBERO-10 Robot Manipulation Tasks</h3>
+            <p class="pub-authors">May Espinola*, <u>Qifan Zhang</u>*, and Yu Xiang</p>
+            <p class="pub-venue">arXiv preprint, 2026</p>
+            <p class="pub-authors">*Equal contribution.</p>
+            <div class="pub-actions">
+              <a class="action-btn" href="https://arxiv.org/abs/2610.30051" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a class="action-btn" href="https://github.com/IRVLUTD/LLM_LIBERO" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="action-btn" href="https://irvlutd.github.io/LLM-LIBERO/" target="_blank" rel="noopener noreferrer">Website</a>
             </div>
           </div>
         </article>
@@ -767,7 +817,7 @@
         <article class="pub-item">
           <div class="pub-thumb">
             <!-- <div class="thumb-label"> -->
-              <img src="Cook4D.png" alt="HOCAP paper image">
+              <img src="Cook4D.png" alt="CaptainCook4D dataset overview">
             <!-- </div> -->
           </div>
           <div>
@@ -820,21 +870,42 @@
 
     <section id="projects" class="section-card">
       <div class="section-header">
-        <h2 class="section-title">Projects</h2>
-        <!-- <p class="section-description">Project cards are ready for your cover images and target links.</p> -->
+        <h2 class="section-title">Other Projects</h2>
       </div>
 
       <div class="projects-grid">
-        <a class="project-card" href="https://www.youtube.com/watch?v=pEM8gcRkA7M">
+        <article class="project-card" id="project-continual-vla">
           <div class="project-thumb">
-            <img src="PTG.png" alt="Darpa project image">
+            <img src="Continual%20Learning%20for%20VLA%20Models.png" alt="Continual learning for VLA models: learn new tasks and retain robot skills">
           </div>
           <div class="project-content">
-            <h3 class="project-title">DARPA PTG</h3>
+            <h3 class="project-title">Continual Learning for VLA Models</h3>
+            <p class="project-subtitle">Ongoing research</p>
+            <p class="project-description">A framework for sequential policy fine-tuning and evaluation, with continual learning methods that help vision-language-action policies acquire new manipulation tasks while retaining previously learned skills.</p>
+          </div>
+        </article>
+
+        <article class="project-card" id="project-stem-2026">
+          <div class="project-thumb">
+            <img src="Summer2026.png" alt="CAST-STEM Bridge 2026: robot manipulation using vision-language-action models">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">CAST-STEM Bridge 2026</h3>
+            <p class="project-subtitle">CAST-STEM Bridge Program · 3rd Prize</p>
+            <p class="project-description">Collected demonstrations by teleoperating an SO-101 robotic arm and fine-tuned vision-language-action policies through imitation learning to perform manipulation tasks autonomously.</p>
+          </div>
+        </article>
+
+        <a class="project-card" href="https://6870362276c8fc9e2aeeb7c4--beamish-babka-095ba1.netlify.app/">
+          <div class="project-thumb">
+            <img src="Summer2025.png" alt="Summer2025 project image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">CAST-STEM Bridge 2025</h3>
             <!-- <p class="project-subtitle">Short subtitle or year</p> -->
-            <p class="project-description"> A first-person AR assistant on Microsoft HoloLens 2 
-              that recognizes relevant objects and provides real-time guidance for kitchen tasks 
-              such as cooking and coffee making.</p>
+            <p class="project-description">A perception-driven robot grasping project that
+              integrates object segmentation, 6D pose estimation, and robotic execution across
+              simulation and real-world Fetch robot.</p>
             <!-- <span class="project-link">Open Project →</span> -->
           </div>
         </a>
@@ -844,25 +915,25 @@
             <img src="Summer2024.png" alt="Summer2024 project image">
           </div>
           <div class="project-content">
-            <h3 class="project-title">STEM Bridge 2024</h3>
+            <h3 class="project-title">CAST-STEM Bridge 2024</h3>
             <!-- <p class="project-subtitle">Short subtitle or year</p> -->
-            <p class="project-description">A multi-camera hand-object pose estimation project 
-              that integrates 3D hand reconstruction and 6D object tracking for AR/VR and 
+            <p class="project-description">A multi-camera hand-object pose estimation project
+              that integrates 3D hand reconstruction and 6D object tracking for AR/VR and
               robotics applications.</p>
             <!-- <span class="project-link">Open Project →</span> -->
           </div>
         </a>
 
-       <a class="project-card" href="https://6870362276c8fc9e2aeeb7c4--beamish-babka-095ba1.netlify.app/">
+        <a class="project-card" href="https://www.youtube.com/watch?v=pEM8gcRkA7M">
           <div class="project-thumb">
-            <img src="Summer2025.png" alt="Summer2025 project image">
+            <img src="PTG.png" alt="Darpa project image">
           </div>
           <div class="project-content">
-            <h3 class="project-title">STEM Bridge 2025</h3>
+            <h3 class="project-title">DARPA PTG</h3>
             <!-- <p class="project-subtitle">Short subtitle or year</p> -->
-            <p class="project-description">A perception-driven robot grasping project that 
-              integrates object segmentation, 6D pose estimation, and robotic execution across 
-              simulation and real-world Fetch robot.</p>
+            <p class="project-description"> A first-person AR assistant on Microsoft HoloLens 2
+              that recognizes relevant objects and provides real-time guidance for kitchen tasks
+              such as cooking and coffee making.</p>
             <!-- <span class="project-link">Open Project →</span> -->
           </div>
         </a>
